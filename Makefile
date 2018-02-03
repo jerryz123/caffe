@@ -178,7 +178,7 @@ ifneq ($(CPU_ONLY), 1)
 	LIBRARIES := cudart cublas curand
 endif
 
-LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_hl hdf5
+LIBRARIES += glog gflags protobuf boost_system boost_filesystem m
 
 # handle IO dependencies
 USE_LEVELDB ?= 1
@@ -679,7 +679,7 @@ superclean: clean supercleanfiles
 
 $(DIST_ALIASES): $(DISTRIBUTE_DIR)
 
-$(DISTRIBUTE_DIR): all py | $(DISTRIBUTE_SUBDIRS)
+$(DISTRIBUTE_DIR): all | $(DISTRIBUTE_SUBDIRS)
 	# add proto
 	cp -r src/caffe/proto $(DISTRIBUTE_DIR)/
 	# add include
